@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>🔥 Премиум Курсы</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a, #0d0d0d);
+      color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #c0c0c0, #ffd700, #e5e4e2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    }
+
+    p {
+      color: #ccc;
+      margin: 10px 0 25px 0;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .course {
+      width: 85%;
+      background: linear-gradient(145deg, #1c1c1c, #121212);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+    }
+
+    .course:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: linear-gradient(45deg, #ffd700, #ffb700);
+      color: #111;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #ffd700;
+      letter-spacing: 1px;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      font-size: 13px;
+      color: #777;
+      text-align: center;
+    }
+
+    .gold-glow {
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <h2 class="gold-glow">🏆 Премиум Курсы</h2>
+  <p>Выбери уровень, соответствующий твоему прогрессу:</p>
+
+  <div class="course" onclick="openLesson('silver')">
+    <div class="badge">SILVER</div>
+    <div class="title">💠 Silver Level</div>
+    <div class="desc">Базовые знания и первые шаги в обучении.</div>
+  </div>
+
+  <div class="course" onclick="openLesson('gold')">
+    <div class="badge">GOLD</div>
+    <div class="title">✨ Gold Level</div>
+    <div class="desc">Продвинутые техники и глубокое понимание курса.</div>
+  </div>
+
+  <div class="course" onclick="openLesson('platinum')">
+    <div class="badge">PLATINUM</div>
+    <div class="title">👑 Platinum Level</div>
+    <div class="desc">Профессиональный уровень и персональные стратегии.</div>
+  </div>
+
+  <footer>© 2025 Premium Academy</footer>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    const user = tg.initDataUnsafe?.user;
+    const name = user?.first_name || "Студент";
+
+    // Приветствие (можно добавить сверху, если хочешь)
+    console.log(`Добро пожаловать, ${name}`);
+
+    function openLesson(level) {
+      tg.sendData("open_lesson_" + level);
+      tg.close();
+    }
+  </script>
+</body>
+</html>
